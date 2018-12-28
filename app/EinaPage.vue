@@ -1,55 +1,116 @@
 <template>
-  <ul :class="overlayclass ? overlayclass : '_einapage__container'" class="_einapage__container-main">
-    <li :class="detailsclass ? detailsclass : '_einapage__details'">
+  <ul
+  :class="{
+    '_einapage__container-main _einapage__container' : true,
+    [overlayclass]: overlayclass
+  }">
+    <li
+    :class="{
+      '_einapage__details': true,
+      [detailsclass]: detailsclass
+    }">
       <slot
-      name="details"
       :currentrows="$props.currentrows"
       :rowcount="$props.rowcount"
       :currentpage="$props.currentpage"
-      :pagecount="$props.pagecount">
-        <span :class="dataclass ? dataclass : '_einapage__data'">
+      :pagecount="$props.pagecount"
+      name="details">
+        <span
+        :class="{
+          '_einapage__data': true,
+          [dataclass]: dataclass
+        }">
           {{ details }}
         </span>
       </slot>
     </li>
-    <li :class="itemclass ? itemclass : '_einapage__item _einapage__first'">
+    <li
+    :class="{
+      '_einapage__item _einapage__first': true,
+      [itemclass]: itemclass
+    }">
       <a href="#" v-on:click.prevent="doPagination(1)">
         <slot name="firstArrow">
-          <span :class="dataclass ? dataclass : '_einapage__data'" aria-hidden="true">&laquo;</span>
+          <span
+          :class="{
+            '_einapage__data': true,
+            [dataclass]: dataclass
+          }"
+          aria-hidden="true">&laquo;</span>
         </slot>
       </a>
     </li>
-    <li v-show="shouldSeeMore[0]" :class="itemclass ? itemclass : '_einapage__item'">
+    <li
+    v-show="shouldSeeMore[0]"
+    :class="{
+      '_einapage__item': true,
+      [itemclass]: itemclass
+    }">
       <a href="#" v-on:click.prevent>
-        <span :class="dataclass ? dataclass : '_einapage__data'" aria-hidden="true">...</span>
+        <span
+        :class="{
+          '_einapage__data': true,
+          [dataclass]: dataclass
+        }"
+        aria-hidden="true">...</span>
       </a>
     </li>
     <li
     v-for="page in pageCount"
     :class="{
       'active': activePage(page),
-      '_einapage__item': !itemclass,
+      '_einapage__item': true,
       [itemclass]: itemclass
     }">
       <a href="#" v-on:click.prevent="doPagination(newPage(page))">
         {{ newPage(page) }}
       </a>
     </li>
-    <li v-show="shouldSeeMore[1]" :class="itemclass ? itemclass : '_einapage__item'">
+    <li
+    v-show="shouldSeeMore[1]"
+    :class="{
+      '_einapage__item': true,
+      [itemclass]: itemclass
+    }">
       <a href="#" v-on:click.prevent>
-        <span :class="dataclass ? dataclass : '_einapage__data'" aria-hidden="true">...</span>
+        <span
+        :class="{
+          '_einapage__data': true,
+          [dataclass]: dataclass
+        }"
+        aria-hidden="true">...</span>
       </a>
     </li>
-    <li :class="itemclass ? itemclass : '_einapage__item'">
+    <li
+    :class="{
+      '_einapage__item': true,
+      [itemclass]: itemclass
+    }">
       <a href="#" v-on:click.prevent="doPagination(pagecount)">
         <slot name="lastArrow">
-          <span :class="dataclass ? dataclass : '_einapage__data'" aria-hidden="true">&raquo;</span>
+          <span
+          :class="{
+            '_einapage__data': true,
+            [dataclass]: dataclass
+          }"
+          aria-hidden="true">&raquo;</span>
         </slot>
       </a>
     </li>
   </ul>
 </template>
 <script>
+  // _____________________________________________________________________________
+  // Eina Page for Vue
+  //
+  // Customizable VueJS component oriented to data pagination under MIT license.
+  //
+  // Author: Marcos Jesús Chávez Vega (onca-vega)
+  //   github: https://github.com/onca-vega
+  //   npm: https://www.npmjs.com/~onca-vega
+  //   linkedin: https://linkedin.com/in/marcos-jesus-chavez-vega-onca
+  // _____________________________________________________________________________
+
   export default {
     name: "ovPagination",
     components: {},

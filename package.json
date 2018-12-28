@@ -1,7 +1,7 @@
 {
   "name": "einapage-vue",
   "version": "0.1.0",
-  "description": "Extendable and customizable VueJS component oriented to data pagination",
+  "description": "Customizable VueJS component oriented to data pagination",
   "main": "app/EinaPage.vue",
   "directories": {
     "doc": "docs"

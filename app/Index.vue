@@ -2,9 +2,22 @@
   <eina-page
   v-on:setPage="setPage"
   :currentrows="currentrows"
-  :rowcount="rowcount"
   :currentpage="currentpage"
-  :pagecount="pagecount">
+  :rowcount="rowcount"
+  :pagecount="pagecount"
+  overlayclass="my-overlay-class"
+  detailsclass="my-details-class"
+  itemclass="my-item-class"
+  dataclass="my-data-class">
+    <template slot="details" slot-scope="data">
+      Current row: {{ data.currentrows }}, Current page: {{ data.currentpage }}, Rows: {{ data.rowcount }}, Pages: {{ data.pagecount }}
+    </template>
+    <template slot="firstArrow">
+      First
+    </template>
+    <template slot="lastArrow">
+      Last
+    </template>
   </eina-page>
 </template>
 <script>
