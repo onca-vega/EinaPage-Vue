@@ -5,9 +5,6 @@
   :rowcount="rowcount"
   :currentpage="currentpage"
   :pagecount="pagecount">
-    <template slot="details" slot-scope="data">
-      {{ data }}
-    </template>
   </eina-page>
 </template>
 <script>
