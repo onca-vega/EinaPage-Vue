@@ -116,6 +116,7 @@ Eina Page has only one emitter "setPage" that is related to the page change, and
 
 ### Slots defined for Eina Page
 Let's describe them a little bit:
+
 name | description | scope
 ------------ | ------------- | -------------
 details | Allows you to customize the details text | currentrows, currentpage, rowcount, pagecount
@@ -153,7 +154,7 @@ According to the previous example, the result will be:
 According to the previous example, the result will be:
 ![EinaPage-lastArrow][EinaPage-lastArrow]
 
-###Full example
+### Full example
 ```bash
 <template>
   <eina-page
