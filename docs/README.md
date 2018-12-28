@@ -221,15 +221,6 @@ De acuerdo al ejemplo anterior, el resultado será:
 </style>
 ```
 
-## Versioning
-For further information, read [semver].
-
-## Authors
-* **Marcos Jesús Chávez V** - [onca-vega]
-
-## License
-MIT license.
-
 ## Versionamiento
 Para más información, puedes leer [semver].
 
