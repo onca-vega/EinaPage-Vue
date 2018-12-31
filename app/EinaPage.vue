@@ -112,7 +112,7 @@
   // _____________________________________________________________________________
 
   export default {
-    name: "ovPagination",
+    name: "einaPage",
     components: {},
     mixins: [],
     directives: {},
