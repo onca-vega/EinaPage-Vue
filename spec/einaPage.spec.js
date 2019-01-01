@@ -3,6 +3,20 @@ import Vue from "vue";
 import EinaPage from "./../app/EinaPage.vue";
 
 describe("einaPage", () => {
+  it('computed perPage', () => {
+    const data = { "value": 17 };
+    const einaPage = Vue.extend(EinaPage);
+    const page = new einaPage({ propsData: data}).$mount();
+    expect(page.perPage).toBe(17);
+  });
+
+  it('computed perPage 2', () => {
+    const data = { "value": 17 };
+    const einaPage = shallowMount(EinaPage, { propsData: data });
+    einaPage.vm.perPage = 25;
+    expect(einaPage.emitted().input[0][0]).toBe(25);
+  });
+
   it('computed details', () => {
     const data = {
       "currentrows": 17,

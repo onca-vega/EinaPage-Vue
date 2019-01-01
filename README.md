@@ -40,6 +40,9 @@ currentrows | Number of rows that are in the current page | number | 0
 rowcount | Number related to the total of rows that exists | number | 1
 currentpage | Current page showed | number | 1
 pagecount | Number related to the total of pages that exists | number | 0
+perpage | Array of numbers related to options that define how many rows per page will be | array | undefined
+perpageclass | CSS class at the node of the select element's container, defined to deliver how many rows per page will be | string | undefined
+selectclass | CSS class at the node of the select element, defined to deliver how many rows per page will be | string | undefined
 overlayclass | CSS class at the root of the component | string | undefined
 dataclass | CSS class inside every data text | string | undefined
 detailsclass | CSS class at the node of the details | string | undefined
@@ -54,6 +57,9 @@ Let´s see them step by step, following the next example:
   :currentpage="4"
   :rowcount="25100"
   :pagecount="1255"
+  :perpage="[5, 10, 15, 20, 25]"
+  perpageclass="per-page-class"
+  selectclass="select-class"
   overlayclass="my-overlay-class"
   detailsclass="my-details-class"
   itemclass="my-item-class"
@@ -78,6 +84,18 @@ In the example we are telling Eina Page that "rowcount" is equal to 25100, resul
 #### Prop: pagecount
 In the example we are telling Eina Page that "pagecount" is equal to 1255, resulting:
 ![EinaPage-pagecount][EinaPage-pagecount]
+
+#### Prop: perpage
+In the example we are telling Eina Page that "perpage" is equal to [5, 10, 15, 20, 25], resulting:
+![EinaPage-perpage][EinaPage-perpage]
+
+#### Prop: perpageclass
+In the example we are telling Eina Page that "perpage" is equal to "per-page-class", resulting:
+![EinaPage-perpageclass][EinaPage-perpageclass]
+
+#### Prop: selectclass
+In the example we are telling Eina Page that "perpage" is equal to "select-class", resulting:
+![EinaPage-selectclass][EinaPage-selectclass]
 
 #### Prop: overlayclass
 In the example we are telling Eina Page that "overlayclass" is equal to "my-overlay-class". This class is positioned at the root of the component:
@@ -114,12 +132,42 @@ Eina Page has only one emitter "setPage" that is related to the page change, and
 ...
 ```
 
+### v-model defined for Eina Page
+The way to obtain actual perPage value, is through 'v-model' Vue, directive. By this way you could determine what is the actual value for the per page select element, according to the next code:
+
+```bash
+...
+<template>
+  <eina-page
+  v-model="perpage.value"
+  :perpage="perpage.options">
+  </eina-page>
+</template>
+...
+  data: function(){
+    return {
+      perpage: {
+        value: 10,
+        options: [5, 10, 15, 20, 25]
+      }
+    };
+  },
+  computed: {},
+  watch: {
+    "perpage.value": function(val){
+      console.log("Value per page is: " + val);
+    }
+  },
+...
+```
+
 ### Slots defined for Eina Page
 Let's describe them a little bit:
 
 name | description | scope
 ------------ | ------------- | -------------
 details | Allows you to customize the details text | currentrows, currentpage, rowcount, pagecount
+perPage | Allows you to customize the select element that owns the options to define how many rows per page will be | perpage
 firstArrow | Allows you to customize the content of the button for the first page | none
 lastArrow | Allows you to customize the content of the button for the last page | none
 
@@ -130,6 +178,9 @@ Then, let´s see them step by step, following the next example:
   <eina-page>
     <template slot="details" slot-scope="data">
       Current row: {{ data.currentrows }}, Current page: {{ data.currentpage }}, Rows: {{ data.rowcount }}, Pages: {{ data.pagecount }}
+    </template>
+    <template slot="perPage" slot-scope="data">
+      Options: {{ data.perpage }}
     </template>
     <template slot="firstArrow">
       First
@@ -146,6 +197,10 @@ Then, let´s see them step by step, following the next example:
 According to the previous example, the result will be:
 ![EinaPage-details][EinaPage-details]
 
+#### Slot: perPage
+According to the previous example, the result will be:
+![EinaPage-perPage][EinaPage-perPage]
+
 #### Slot: firstArrow
 According to the previous example, the result will be:
 ![EinaPage-firstArrow][EinaPage-firstArrow]
@@ -159,6 +214,8 @@ According to the previous example, the result will be:
 <template>
   <eina-page
   v-on:setPage="setPage"
+  v-model="perpage.value"
+  :perpage="perpage.options"
   :currentrows="currentrows"
   :currentpage="currentpage"
   :rowcount="rowcount"
@@ -166,9 +223,14 @@ According to the previous example, the result will be:
   overlayclass="my-overlay-class"
   detailsclass="my-details-class"
   itemclass="my-item-class"
-  dataclass="my-data-class">
+  dataclass="my-data-class"
+  perpageclass="per-page-class"
+  selectclass="select-class">
     <template slot="details" slot-scope="data">
       Current row: {{ data.currentrows }}, Current page: {{ data.currentpage }}, Rows: {{ data.rowcount }}, Pages: {{ data.pagecount }}
+    </template>
+    <template slot="perPage" slot-scope="data">
+      Options: {{ data.perpage }}
     </template>
     <template slot="firstArrow">
       First
@@ -194,11 +256,19 @@ According to the previous example, the result will be:
         currentrows: 17,
         rowcount: 25100,
         currentpage: 4,
-        pagecount: 1255
+        pagecount: 1255,
+        perpage: {
+          value: 10,
+          options: [5, 10, 15, 20, 25]
+        }
       };
     },
     computed: {},
-    watch: {},
+    watch: {
+      "perpage.value": function(val){
+        console.log("Value per page is: " + val);
+      }
+    },
     filters: {},
     methods: {
       setPage(p){
@@ -217,7 +287,7 @@ According to the previous example, the result will be:
     destroyed: function(){}
   }
 </script>
-<style scoped>
+<style>
 </style>
 ```
 
@@ -237,11 +307,15 @@ MIT license.
 [EinaPage-currentpage]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-currentpage.png
 [EinaPage-rowcount]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-rowcount.png
 [EinaPage-pagecount]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-pagecount.png
+[EinaPage-perpage]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-perpage.png
+[EinaPage-perpageclass]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-perpageclass.png
+[EinaPage-selectclass]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-selectclass.png
 [EinaPage-overlayclass]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-overlayclass.png
 [EinaPage-detailsclass]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-detailsclass.png
 [EinaPage-itemclass]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-itemclass.png
 [EinaPage-dataclass]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-dataclass.png
 [EinaPage-details]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-details.png
+[EinaPage-perPage]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-perPage.png
 [EinaPage-firstArrow]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-firstArrow.png
 [EinaPage-lastArrow]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-lastArrow.png
 [onca-vega]: https://github.com/onca-vega

@@ -26,6 +26,22 @@
     </li>
     <li
     :class="{
+      '_einapage__per-page': true,
+      [perpageclass]: perpageclass
+    }">
+      <slot
+      :perpage="$props.perpage"
+      name="perPage">
+        <select
+        v-if="$props.perpage && $props.perpage.length"
+        v-model="perPage"
+        :class="{ [selectclass]: selectclass }">
+          <option v-for="s in $props.perpage" :value="s">{{ s }}</option>
+        </select>
+      </slot>
+    </li>
+    <li
+    :class="{
       '_einapage__item _einapage__first': true,
       [itemclass]: itemclass
     }">
@@ -117,6 +133,9 @@
     mixins: [],
     directives: {},
     props: {
+      value: [ String, Number ],
+      perpage: Array,
+
       currentrows: {
         type: Number, default: 0
       },
@@ -133,12 +152,22 @@
       overlayclass: String,
       detailsclass: String,
       itemclass: String,
-      dataclass: String
+      dataclass: String,
+      perpageclass: String,
+      selectclass: String
     },
     data: function(){
       return {};
     },
     computed: {
+      perPage: {
+        get(){
+          return this.$props.value;
+        },
+        set(v){
+          this.$emit("input", v);
+        }
+      },
       details: {
         get(){
           return `Mostrando ${ this.$props.currentrows } de ${ this.$props.rowcount } filas en la página ${ this.$props.currentpage } de ${ this.$props.pagecount }.`;
@@ -215,6 +244,9 @@
   li._einapage__details{
     margin-right: 5px;
   }
+  li._einapage__per-page{
+    display: inline-block;
+  }
   li._einapage__item{
     display: inline-block;
   }
@@ -231,6 +263,23 @@
   }
   span._einapage__data{
     color: #484848;
+  }
+  li._einapage__per-page select{
+    border-radius: 8px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 12px;
+    padding-right: 12px;
+    text-decoration: none;
+    color: #484848;
+    border-bottom: 1px solid #B8B8B8;
+    border-top: 1px solid #B8B8B8;
+    border-right: 1px solid #B8B8B8;
+  }
+  li._einapage__per-page select option:checked,
+  li._einapage__per-page select option[selected="selected"]{
+    background-color: #484848;
+    color: #ffffff;
   }
   li._einapage__item a{
     padding-top: 7px;
