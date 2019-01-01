@@ -199,7 +199,7 @@ According to the previous example, the result will be:
 
 #### Slot: perPage
 According to the previous example, the result will be:
-![EinaPage-perPage][EinaPage-perPage]
+![EinaPage-perPageSlot][EinaPage-perPageSlot]
 
 #### Slot: firstArrow
 According to the previous example, the result will be:
@@ -315,7 +315,7 @@ MIT license.
 [EinaPage-itemclass]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-itemclass.png
 [EinaPage-dataclass]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-dataclass.png
 [EinaPage-details]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-details.png
-[EinaPage-perPage]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-perPage.png
+[EinaPage-perPageSlot]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-perPageSlot.png
 [EinaPage-firstArrow]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-firstArrow.png
 [EinaPage-lastArrow]: https://raw.githubusercontent.com/onca-vega/EinaPage-Vue/master/docs/image/EinaPage-lastArrow.png
 [onca-vega]: https://github.com/onca-vega
