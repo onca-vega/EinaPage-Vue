@@ -36,6 +36,7 @@
   color: #484848;
 }
 ._einapage__per-page select{
+  background-color: transparent;
   border-radius: 8px;
   padding-top: 7px;
   padding-bottom: 7px;
