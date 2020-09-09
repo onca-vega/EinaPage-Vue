@@ -120,19 +120,18 @@
   </div>
 </template>
 <script>
-  // _____________________________________________________________________________
-  // Eina Page for Vue
-  //
-  // Customizable VueJS component oriented to data pagination under MIT license.
-  //
-  // Author: Marcos Jesús Chávez Vega (onca-vega)
-  //   github: https://github.com/onca-vega
-  //   npm: https://www.npmjs.com/~onca-vega
-  //   linkedin: https://linkedin.com/in/marcos-jesus-chavez-vega-onca
-  // _____________________________________________________________________________
+  /* _____________________________________________________________________________
+   * Eina Page for Vue
+   *
+   * Customizable VueJS component oriented to data pagination under MIT license.
+   *
+   * Author: Marcos Jesús Chávez Vega (onca-vega)
+   *  website: https://onca-vega.com
+   * _____________________________________________________________________________
+   */
 
   export default {
-    name: "Einapage",
+    name: 'Einapage',
     props: {
       value: [ String, Number ],
       perpage: Array,
@@ -163,7 +162,7 @@
           return this.$props.value;
         },
         set(v){
-          this.$emit("input", v);
+          this.$emit('input', v);
         }
       },
       details: {
@@ -208,85 +207,8 @@
     },
     methods: {
       doPagination(page){
-        this.$emit("setPage", page);
+        this.$emit('setPage', page);
       }
     }
   }
 </script>
-<style scoped>
-  div._einapage{
-    display: flex;
-  }
-  ul._einapage__container{
-    display: inline-table;
-    list-style: none;
-    padding-left: 0;
-  }
-  @media(min-width: 576px){
-    ul._einapage__container{
-      margin-left: auto;
-      text-align: right;
-    }
-  }
-  li._einapage__details{
-    margin-right: 5px;
-  }
-  li._einapage__per-page{
-    display: inline-flex;
-  }
-  li._einapage__item{
-    display: inline-flex;
-  }
-  @media(min-width: 992px){
-    li._einapage__details{
-      display: inline-flex;
-    }
-  }
-  @media(max-width: 991px){
-    li._einapage__details{
-      display: block;
-      margin-bottom: 10px;
-    }
-  }
-  span._einapage__data{
-    color: #484848;
-  }
-  li._einapage__per-page select{
-    border-radius: 8px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-left: 12px;
-    padding-right: 12px;
-    text-decoration: none;
-    color: #484848;
-    border-bottom: 1px solid #B8B8B8;
-    border-top: 1px solid #B8B8B8;
-    border-right: 1px solid #B8B8B8;
-  }
-  li._einapage__per-page select option:checked,
-  li._einapage__per-page select option[selected="selected"]{
-    background-color: #484848;
-    color: #ffffff;
-  }
-  li._einapage__item a{
-    text-decoration: none;
-    color: #484848;
-    border-bottom: 1px solid #B8B8B8;
-    border-top: 1px solid #B8B8B8;
-    border-right: 1px solid #B8B8B8;
-    padding: 7px 12px;
-  }
-  li._einapage__item._einapage__first a{
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-left: 1px solid #B8B8B8;
-  }
-  li._einapage__item:last-child a{
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-  li._einapage__item.active a{
-    color: #ffffff;
-    background-color: #484848;
-  }
-</style>

@@ -1,8 +1,10 @@
-import Vue from "vue";
-import Index from "./Index.vue";
-import einaPage from "./EinaPage.vue";
+import Vue from 'vue';
+import App from './App.vue';
+// import einapage from './einapage';
+//
+// Vue.component('einapage', einapage);
 
 new Vue({
-  el: "#index",
-  render: h => h(Index)
+  el: '#app',
+  render: h => h(App)
 });

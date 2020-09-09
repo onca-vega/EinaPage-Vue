@@ -1,7 +1,7 @@
 <template>
   <div>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    <eina-page
+    <einapage
     v-on:setPage="setPage"
     v-model="perpage.value"
     :currentrows="currentrows"
@@ -27,17 +27,17 @@
       <template slot="lastArrow">
         Last
       </template> -->
-    </eina-page>
+    </einapage>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </div>
 </template>
 <script>
-  import einaPage from "./EinaPage.vue";
+  import einapage from './einapage';
 
   export default {
-    name: "Index",
+    name: 'Index',
     components: {
-      einaPage
+      einapage
     },
     data() {
       return {
@@ -52,8 +52,8 @@
       };
     },
     watch: {
-      "perpage.value": function(val){
-        console.log("Value per page is: " + val);
+      'perpage.value': function(val){
+        console.log('Value per page is: ' + val);
       }
     },
     methods: {
@@ -63,6 +63,8 @@
     }
   }
 </script>
+
+<style src="./css/einapage.css"/>
 <style>
   .my-overlay-class {
     margin-left: initial;

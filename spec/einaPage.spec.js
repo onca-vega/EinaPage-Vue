@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import Vue from "vue";
-import EinaPage from "./../app/EinaPage.vue";
+import EinaPage from "./../app/einapage";
 
 describe("einaPage", () => {
   it('computed perPage', () => {
@@ -171,7 +171,7 @@ describe("einaPage", () => {
     const page = new einaPage({ propsData: data}).$mount();
 
     Vue.nextTick(() => {
-      expect(page.$el.classList.contains("overlayclass")).toBeTruthy();
+      expect(page.$el.getElementsByClassName("overlayclass").length).toBeTruthy();
       expect(page.$el.getElementsByClassName("detailsclass").length).toBeTruthy();
       expect(page.$el.getElementsByClassName("detailsclass")[0].tagName).toBe("LI");
 
