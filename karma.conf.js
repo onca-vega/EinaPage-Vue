@@ -15,7 +15,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       './spec/*spec.js',
-      './app/EinaPage.vue'
+      './app/einapage'
     ],
 
     // list of files / patterns to exclude
@@ -27,7 +27,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       './spec/*spec.js': ['webpack'],
-      './app/EinaPage.vue': ['webpack']
+      './app/einapage': ['webpack']
     },
 
     // test results reporter to use
