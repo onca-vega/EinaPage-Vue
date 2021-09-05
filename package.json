@@ -1,6 +1,6 @@
 {
   "name": "einapage-vue",
-  "version": "1.3.6",
+  "version": "1.4.6",
   "description": "Customizable VueJS component oriented to data pagination",
   "main": "app/einapage",
   "directories": {
@@ -31,30 +31,30 @@
   },
   "homepage": "https://github.com/onca-vega/EinaPage-Vue#readme",
   "devDependencies": {
-    "@vue/test-utils": "^1.0.5",
-    "@babel/core": "^7.11.6",
-    "babel-loader": "^8.1.0",
-    "@babel/preset-env": "^7.11.5",
-    "css-loader": "^4.2.2",
-    "html-webpack-plugin": "^4.4.1",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4",
+    "@vue/test-utils": "^1.2.2",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.7",
+    "html-webpack-plugin": "^4.5.2",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine": "^3.6.1",
-    "karma": "^5.2.1",
+    "karma": "^6.3.4",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^3.0.3",
     "karma-coveralls": "^2.1.0",
-    "karma-firefox-launcher": "^1.3.0",
+    "karma-firefox-launcher": "^2.1.1",
     "karma-jasmine": "^4.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
-    "karma-webpack": "^4.0.2",
-    "style-loader": "^1.2.1",
-    "vue-loader": "^15.9.3",
-    "vue-template-compiler": "^2.6.12",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "karma-webpack": "^5.0.0",
+    "style-loader": "^1.3.0",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.6.14"
   }
 }

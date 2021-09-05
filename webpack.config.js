@@ -4,47 +4,43 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    index: "./app/app.js"
+    index: "./app/app.js",
   },
   resolve: {
     alias: {
-      vue: "vue/dist/vue.js"    // Setting vue mode
-    }
+      vue: "vue/dist/vue.js", // Setting vue mode
+    },
   },
   devServer: {
-    contentBase: "./app",
-    port: 4200
+    port: 4200,
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: [ "vue-loader" ]
+        use: ["vue-loader"],
       },
       {
         test: /\.js$/,
-        exclude: [
-          /\.spec\.js$/,
-          /node_modules/
-        ],
+        exclude: [/\.spec\.js$/, /node_modules/],
         use: [
           {
-            loader: 'istanbul-instrumenter-loader',
-            query: { esModules: true }
+            loader: "istanbul-instrumenter-loader",
+            options: { esModules: true },
           },
-          'babel-loader'
-        ]
+          "babel-loader",
+        ],
       },
       {
         test: /\.css$/,
-        use: [ "style-loader", "css-loader" ]
-      }
-    ]
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: "app/index.html"
-    })
-  ]
+      template: "app/index.html",
+    }),
+  ],
 };

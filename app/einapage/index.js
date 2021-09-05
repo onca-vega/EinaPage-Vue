@@ -1,1 +1,1 @@
-export { default } from './einapage.vue';
+export { default } from "./einapage.vue";
