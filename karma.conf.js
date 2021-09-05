@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Thu Oct 04 2018 19:59:17 GMT-0500 (Hora de verano central (México))
-const path = require("path");
 const webpack = require("./webpack.config.js");
+
 module.exports = function(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)

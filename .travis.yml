@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10.2.1"
+  - "14.17.6"
 services:
   - xvfb
 before_install:
